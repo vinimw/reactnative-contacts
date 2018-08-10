@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import { CaptFirstLetter } from '../utils';
 
 
@@ -9,7 +9,8 @@ const PeopleLisItem = props => {
 
 	return (
 		<View style={ styles.list }>
-			<Text>{ `${CaptFirstLetter(first)} ${CaptFirstLetter(last)}` }</Text>
+			<Image style={ styles.avatar } source={{ uri: people.picture.thumbnail }} />
+			<Text style={ styles.lineText } >{ `${CaptFirstLetter(first)} ${CaptFirstLetter(last)}` }</Text>
 		</View>
 	);
 }
@@ -18,7 +19,21 @@ const styles = StyleSheet.create({
 	list: {
 		padding: 10,
 		borderBottomWidth: 1,
-		borderBottomColor: '#CCC'
+		borderBottomColor: '#CCC',
+		alignItems: 'center',
+		flexDirection: 'row'
+	},
+	lineText: {
+		fontSize: 20,
+		paddingLeft: 15,
+		flex: 7
+	},
+	avatar: {
+		aspectRatio: 1,
+		width: 50,
+		flex: 1,
+		marginLeft: 5,
+		borderRadius: 50
 	}
 });
 
