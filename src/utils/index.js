@@ -1,0 +1,1 @@
+export { default as CaptFirstLetter } from './CaptFirstLetter';
