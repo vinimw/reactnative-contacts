@@ -8,11 +8,18 @@ export default createStackNavigator ({
 		screen: PeoplePage
 	},
 	'PeopleDetail': {
-		screen: PeopleDetailPage
+		screen: PeopleDetailPage,
+		navigationOptions: ({navigation}) => {
+			const personName = navigation.state.params.people.name.first;
+			return ({
+				title: personName	
+			});
+		}
 	}
 }, {
 	navigationOptions: {
 		title: 'People!',
+		headerTintColor: '#FFF',
 		headerStyle: {
 			backgroundColor: '#264676',
 			borderBottomWidth: 1,

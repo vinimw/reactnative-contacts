@@ -9,7 +9,7 @@ const PeopleLisItem = props => {
 
 	return (
 		<TouchableOpacity onPress={() => {
-			peopleDetail();
+			peopleDetail({ people });
 		}}>
 			<View style={ styles.list }>
 				<Image style={ styles.avatar } source={{ uri: people.picture.thumbnail }} />
