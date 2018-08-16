@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { CaptFirstLetter } from '../utils';
 
 
@@ -8,10 +8,12 @@ const PeopleLisItem = props => {
 	const { first, last } = people.name;
 
 	return (
-		<View style={ styles.list }>
-			<Image style={ styles.avatar } source={{ uri: people.picture.thumbnail }} />
-			<Text style={ styles.lineText } >{ `${CaptFirstLetter(first)} ${CaptFirstLetter(last)}` }</Text>
-		</View>
+		<TouchableOpacity onPress={() => console.log('clicked')}>
+			<View style={ styles.list }>
+				<Image style={ styles.avatar } source={{ uri: people.picture.thumbnail }} />
+				<Text style={ styles.lineText } >{ `${CaptFirstLetter(first)} ${CaptFirstLetter(last)}` }</Text>
+			</View>
+		</TouchableOpacity>
 	);
 }
 
@@ -30,7 +32,6 @@ const styles = StyleSheet.create({
 	},
 	avatar: {
 		aspectRatio: 1,
-		width: 50,
 		flex: 1,
 		marginLeft: 5,
 		borderRadius: 50
