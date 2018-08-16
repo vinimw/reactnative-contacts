@@ -4,10 +4,10 @@ import { Text, View, StyleSheet } from 'react-native';
 import PeopleListItem from './PeopleListItem';
 
 const PeopleList = (props) => {
-	const { people } = props;
+	const { people, onClick } = props;
 
 	const items = people.map( (person, index) => {
-		return <PeopleListItem key={index} people={person} />
+		return <PeopleListItem key={index} people={person} peopleDetail={onClick} />
 		
 	});
 

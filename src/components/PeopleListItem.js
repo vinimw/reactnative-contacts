@@ -4,11 +4,13 @@ import { CaptFirstLetter } from '../utils';
 
 
 const PeopleLisItem = props => {
-	const { people } = props;
+	const { people, peopleDetail } = props;
 	const { first, last } = people.name;
 
 	return (
-		<TouchableOpacity onPress={() => console.log('clicked')}>
+		<TouchableOpacity onPress={() => {
+			peopleDetail();
+		}}>
 			<View style={ styles.list }>
 				<Image style={ styles.avatar } source={{ uri: people.picture.thumbnail }} />
 				<Text style={ styles.lineText } >{ `${CaptFirstLetter(first)} ${CaptFirstLetter(last)}` }</Text>

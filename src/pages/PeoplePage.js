@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import PeopleList from '../components/PeopleList';
 import Axios from 'axios';
 
@@ -26,10 +26,14 @@ export default class PeoplePage extends React.Component {
   }
 
   render() {
+    // this.props.navigation.navigate('PeopleDetail');
     return (
       <View>
-        <Header title="header test a" />
-        <PeopleList people={ this.state.people } />
+        <PeopleList
+          people={ this.state.people }
+          onClick={() => {
+            this.props.navigation.navigate('PeopleDetail');
+          }}  />
       </View>
     );
   }
