@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 		aspectRatio: 1,
 		flex: 1,
 		marginLeft: 5,
-		borderRadius: 50
+		borderRadius: 20
 	}
 });
 
