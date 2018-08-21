@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ActivityIndicator } from 'react-native';
+import { Text, View, ActivityIndicator, StyleSheet } from 'react-native';
 // import Header from '../components/Header';
 import PeopleList from '../components/PeopleList';
 import Axios from 'axios';
@@ -12,6 +12,7 @@ export default class PeoplePage extends React.Component {
     this.state = {
       people: [],
       loading: false,
+      error: false,
     };
   }
 
@@ -26,24 +27,45 @@ export default class PeoplePage extends React.Component {
           people: results,
           loading: false,
         });
+      })
+      .catch(error => {
+        this.setState({ 
+          error: true,
+          loading: false,
+        });
       });
+  }
+
+  renderLoading() {
+    if (this.state.loading)
+      return <ActivityIndicator size="large" color="#5d85f9" />;
+    return null;
   }
 
   render() {
     // this.props.navigation.navigate('PeopleDetail');
     return (
-      <View>
+      <View style={styles.container}>
         {
           this.state.loading
             ? <ActivityIndicator size="large" color="#5d85f9" />
-            : null
+            : this.state.error 
+                ? <Text style={styles.error}>Ops. Something wrong.</Text>
+                : <PeopleList people={ this.state.people } onClick={pageParams => { this.props.navigation.navigate('PeopleDetail', pageParams); }}  />
         }
-        <PeopleList
-          people={ this.state.people }
-          onClick={pageParams => {
-            this.props.navigation.navigate('PeopleDetail', pageParams);
-          }}  />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  error: {
+    color: 'red',
+    alignSelf: 'center',
+    fontSize: 18
+  }
+});
