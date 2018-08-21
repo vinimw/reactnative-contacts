@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
 	table: {
 		backgroundColor: '#f4f4f4',
 		elevation: 1,
-		marginTop: 20
+		marginTop: 20,
+		marginBottom: 20
 	}
 });
